@@ -1,0 +1,3 @@
+swe-custom-bench eval branch — base_commit: 0a4204fd7555cfedd43f43017c94d24ef48244a5
+repo: pylint-dev/pylint
+branch: eval-pylint-dev__pylint
