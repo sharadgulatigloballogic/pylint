@@ -10,7 +10,6 @@ from pathlib import Path
 import pytest
 from pytest import CaptureFixture
 
-from pylint.config.exceptions import _UnrecognizedOptionError
 from pylint.lint import Run as LintRun
 from pylint.testutils._run import _Run as Run
 from pylint.testutils.configuration_test import run_using_a_configuration_file
@@ -64,19 +63,31 @@ def test_unknown_message_id(capsys: CaptureFixture) -> None:
 
 
 def test_unknown_option_name(capsys: CaptureFixture) -> None:
-    """Check that we correctly raise a message on an unknown option."""
-    with pytest.raises(_UnrecognizedOptionError):
+    """Check that we correctly raise a message on an unknown option.
+
+    An unrecognized option should not result in an uncaught traceback;
+    instead pylint should print a concise error and exit with code 32.
+    """
+    with pytest.raises(SystemExit) as ex:
         Run([str(EMPTY_MODULE), "--unknown-option=yes"], exit=False)
+    assert ex.value.code == 32
     output = capsys.readouterr()
     assert "E0015: Unrecognized option found: unknown-option=yes" in output.out
+    assert "Unrecognized option found: unknown-option=yes" in output.err
 
 
 def test_unknown_short_option_name(capsys: CaptureFixture) -> None:
-    """Check that we correctly raise a message on an unknown short option."""
-    with pytest.raises(_UnrecognizedOptionError):
+    """Check that we correctly raise a message on an unknown short option.
+
+    An unrecognized option should not result in an uncaught traceback;
+    instead pylint should print a concise error and exit with code 32.
+    """
+    with pytest.raises(SystemExit) as ex:
         Run([str(EMPTY_MODULE), "-Q"], exit=False)
+    assert ex.value.code == 32
     output = capsys.readouterr()
     assert "E0015: Unrecognized option found: Q" in output.out
+    assert "Unrecognized option found: Q" in output.err
 
 
 def test_unknown_confidence(capsys: CaptureFixture) -> None:
