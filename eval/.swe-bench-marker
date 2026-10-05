@@ -1,0 +1,4 @@
+swe-custom-bench eval branch — base_commit: 182cc539b8154c0710fcea7e522267e42eba8899
+repo: pylint-dev/pylint
+branch: eval-pylint-dev__pylint-5859-set-b
+set: set_b (first instance)
