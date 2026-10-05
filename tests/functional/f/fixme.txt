@@ -7,3 +7,4 @@ fixme:20:5:None:None::"todo: no space after hash":UNDEFINED
 fixme:23:2:None:None::"FIXME: this is broken":UNDEFINED
 fixme:25:5:None:None::"./TODO: find with notes":UNDEFINED
 fixme:27:5:None:None::"TO make something DO: find with regex":UNDEFINED
+fixme:31:5:None:None::"???: note tags that are entirely punctuation should still be detected":UNDEFINED
