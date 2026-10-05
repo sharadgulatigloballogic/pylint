@@ -27,6 +27,9 @@ def function():
     # TO make something DO: find with regex
 	# FIXME: this is broken (ISSUE-1234)
 
+    # +1: [fixme]
+    # ???: note tags that are entirely punctuation should still be detected
+
     #FIXME: in fact nothing to fix #pylint: disable=fixme
     #TODO: in fact nothing to do #pylint: disable=fixme
     #TODO: in fact nothing to do #pylint: disable=line-too-long, fixme
